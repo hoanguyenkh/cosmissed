@@ -142,8 +142,8 @@ func TopMissed(summaries []*Summary, blocks int, prefix string) ([]*Top, error) 
 			Missed:    v,
 			MissedPct: 100.0 * float32(v) / float32(blocks),
 		}
-		if len(weights.Validators[index[k]].Tokens) > Precision{
-			tokens, e := strconv.ParseUint(weights.Validators[index[k]].Tokens[:len(weights.Validators[index[k]].Tokens)-Precision], 10, 64)
+		if len(weights.Validators[index[k]].Tokens) > Precision {
+			tokens, e := strconv.ParseFloat(weights.Validators[index[k]].Tokens[:len(weights.Validators[index[k]].Tokens)-Precision], 128)
 			if e == nil {
 				t.Votes = int64(tokens) / -1_000_000
 			} else {
